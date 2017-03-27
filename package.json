@@ -1,0 +1,26 @@
+{
+  "name": "nodeca.nntp",
+  "description": "Nodeca NNTP interface",
+  "version": "0.0.1",
+  "keywords": [
+    "nodeca",
+    "nntp"
+  ],
+  "license": "MIT",
+  "repository": "nodeca/nodeca.nntp",
+  "dependencies": {
+    "nntp-server": "git://github.com/nodeca/nntp-server.git"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
+  }
+}

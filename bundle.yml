@@ -1,0 +1,7 @@
+bundles:
+  frontend:
+    - nntp
+
+
+packages:
+  nntp: {}
