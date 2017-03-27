@@ -8,9 +8,6 @@
   ],
   "license": "MIT",
   "repository": "nodeca/nodeca.nntp",
-  "dependencies": {
-    "nntp-server": "git://github.com/nodeca/nntp-server.git"
-  },
   "browserify": {
     "transform": [
       [
