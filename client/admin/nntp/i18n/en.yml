@@ -1,0 +1,5 @@
+en-US:
+  index:
+    new: Create new group
+    edit: Edit group
+    rebuild: rebuild

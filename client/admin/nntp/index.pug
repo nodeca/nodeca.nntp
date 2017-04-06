@@ -1,0 +1,32 @@
+#content
+  != self.partial('@admin.core.blocks.sidebar_menu')
+
+  .main
+    != self.partial('@admin.core.blocks.breadcrumbs')
+
+    .page-head
+      .float-right
+        a.btn.btn-sm.btn-secondary(href=self.link_to('admin.nntp.groups.new'))= self.t('new')
+      h1.page-head__title= self.head.title
+
+    table.nntp-groups.table.table-hover.table-striped
+      each group in self.groups
+        - var rebuild = self.rebuilds_running.indexOf(group.name) !== -1;
+        tr.nntp-groups__row(
+          class=rebuild ? 'nntp-groups__m-rebuild' : ''
+        )
+          td
+            a(href='#', title=self.t('edit'))= group.name
+          td
+            .dropdown.float-right
+              button.btn.btn-square.btn-sm.btn-secondary.dropdown-toggle(
+                type='button'
+                data-toggle='dropdown'
+              )
+              if !rebuild
+                .dropdown-menu.dropdown-menu-right
+                  button.dropdown-item(
+                    type='button'
+                    data-on-click='admin.nntp.index:rebuild_group'
+                    data-group-id=group._id
+                  )= self.t('rebuild')

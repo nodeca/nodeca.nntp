@@ -1,0 +1,4 @@
+router:
+  http.get:
+    admin.nntp.index:
+      "/nntp": ~

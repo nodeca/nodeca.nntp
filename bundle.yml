@@ -4,4 +4,9 @@ bundles:
 
 
 packages:
+  admin:
+    entries:
+      - client/admin
+      - server/admin
+
   nntp: {}
