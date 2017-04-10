@@ -1,5 +1,8 @@
 en-US:
   index:
-    new: Create new group
-    edit: Edit group
-    rebuild: rebuild
+    rebuild_group_confirm: Are you sure you want to rebuild this group? All of its articles will be deleted and then re-created as necessary.
+    rebuild_all_confirm: Are you sure you want to rebuild all NNTP groups?
+    new_group: Create new group
+    edit_group: Edit group
+    rebuild_group: Rebuild
+    rebuild_all: Rebuild all groups

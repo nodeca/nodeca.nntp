@@ -5,18 +5,30 @@
     != self.partial('@admin.core.blocks.breadcrumbs')
 
     .page-head
-      .float-right
-        a.btn.btn-sm.btn-secondary(href=self.link_to('admin.nntp.groups.new'))= self.t('new')
+      .dropdown.float-right
+        button.btn.btn-square.btn-secondary.dropdown-toggle(
+          type='button'
+          data-toggle='dropdown'
+        )
+        .dropdown-menu.dropdown-menu-right
+          button.dropdown-item(
+            type='button'
+          )= self.t('new_group')
+
+          button.dropdown-item(
+            type='button'
+            data-on-click='admin.nntp.index:rebuild_all'
+          )= self.t('rebuild_all')
       h1.page-head__title= self.head.title
 
     table.nntp-groups.table.table-hover.table-striped
       each group in self.groups
-        - var rebuild = self.rebuilds_running.indexOf(group.name) !== -1;
+        - var rebuild = self.rebuild_in_progress[group._id];
         tr.nntp-groups__row(
           class=rebuild ? 'nntp-groups__m-rebuild' : ''
         )
           td
-            a(href='#', title=self.t('edit'))= group.name
+            a(href='#', title=self.t('edit_group'))= group.name
           td
             .dropdown.float-right
               button.btn.btn-square.btn-sm.btn-secondary.dropdown-toggle(
@@ -29,4 +41,4 @@
                     type='button'
                     data-on-click='admin.nntp.index:rebuild_group'
                     data-group-id=group._id
-                  )= self.t('rebuild')
+                  )= self.t('rebuild_group')
