@@ -25,6 +25,7 @@
       each group in self.groups
         - var rebuild = self.rebuild_in_progress[group._id];
         tr.nntp-groups__row(
+          id= 'nntp-group-' + group._id
           class=rebuild ? 'nntp-groups__m-rebuild' : ''
         )
           td
@@ -35,10 +36,9 @@
                 type='button'
                 data-toggle='dropdown'
               )
-              if !rebuild
-                .dropdown-menu.dropdown-menu-right
-                  button.dropdown-item(
-                    type='button'
-                    data-on-click='admin.nntp.index:rebuild_group'
-                    data-group-id=group._id
-                  )= self.t('rebuild_group')
+              .dropdown-menu.dropdown-menu-right
+                button.dropdown-item(
+                  type='button'
+                  data-on-click='admin.nntp.index:rebuild_group'
+                  data-group-id=group._id
+                )= self.t('rebuild_group')
