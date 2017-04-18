@@ -11,17 +11,21 @@ const Schema   = Mongoose.Schema;
 module.exports = function (N, collectionName) {
 
   let Group = new Schema({
-    name:      String,
-    source:    Schema.ObjectId,
+    name:       String,
+    source:     Schema.ObjectId,
 
     // content type (usually, 'forum')
-    type:      String,
+    type:       String,
 
-    // low water mark (index of the first available article)
-    min_index: { type: Number, 'default': 0 },
+    // min visible post index (default max_index+1 means that group is empty)
+    min_index:  { type: Number, 'default': 1 },
 
-    // high water mark (index of the last article which may or may not be deleted)
-    max_index: { type: Number, 'default': 0 }
+    // max visible post index
+    max_index:  { type: Number, 'default': 0 },
+
+    // Message counter. We can't use min/max directly,
+    // because last message can be deleted.
+    last_index: { type: Number, 'default': 0 }
   }, {
     versionKey: false
   });

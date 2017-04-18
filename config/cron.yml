@@ -1,0 +1,2 @@
+cron:
+  nntp_group_cleanup: 0 22 */3 * * * # every 3 hours
