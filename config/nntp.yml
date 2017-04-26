@@ -1,0 +1,7 @@
+nntp:
+  listen: 0.0.0.0:1119
+#  listen: 0.0.0.0:119
+#  ssl:
+#    listen: 0.0.0.0:563
+#    key:    ./config/examples/ssl.key
+#    cert:   ./config/examples/ssl.crt
