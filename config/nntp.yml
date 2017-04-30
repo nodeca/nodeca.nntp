@@ -5,3 +5,7 @@ nntp:
 #    listen: 0.0.0.0:563
 #    key:    ./config/examples/ssl.key
 #    cert:   ./config/examples/ssl.crt
+
+^test:
+  nntp:
+    listen: 0.0.0.0:2119
