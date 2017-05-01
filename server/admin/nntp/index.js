@@ -3,9 +3,12 @@
 
 'use strict';
 
+const _  = require('lodash');
+
 
 module.exports = function (N, apiPath) {
   N.validate(apiPath, {});
+
 
   N.wire.on(apiPath, async function nntp_groups_list(env) {
     env.res.head.title = env.t('title');
@@ -26,7 +29,8 @@ module.exports = function (N, apiPath) {
       });
     }));
 
-    env.res.groups = groups.map(group => ({ _id: group._id, name: group.name }));
+    env.res.groups = groups;
     env.res.rebuild_in_progress = rebuild_in_progress;
+    env.res.menu = _.get(N.config, 'menus.admin.nntp', {});
   });
 };

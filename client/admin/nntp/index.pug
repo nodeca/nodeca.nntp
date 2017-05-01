@@ -11,9 +11,23 @@
           data-toggle='dropdown'
         )
         .dropdown-menu.dropdown-menu-right
-          button.dropdown-item(
-            type='button'
-          )= self.t('new_group')
+          - var localizationPrefix = '@admin.menus.nntp.';
+
+          - function compare(a, b) { return (a.info.priority || 100) - (b.info.priority || 100); }
+
+          - function sortedItems(items) {
+          -   var result = [];
+          -   Object.keys(items).forEach(function (name) {
+          -     if (!items[name]) { return; }
+          -     result.push({ name: name, info: items[name] });
+          -   });
+          -   return result.sort(compare);
+          - }
+
+          each item in sortedItems(self.menu)
+            a.dropdown-item(
+              href=self.link_to(item.info.to)
+            )= self.t(localizationPrefix + item.name)
 
           button.dropdown-item(
             type='button'
@@ -29,7 +43,10 @@
           class=rebuild ? 'nntp-groups__m-rebuild' : ''
         )
           td
-            a(href='#', title=self.t('edit_group'))= group.name
+            a(
+              href=self.link_to('admin.nntp.update.' + group.type, { _id: group._id })
+              title=self.t('edit_group')
+            )= group.name
           td
             .dropdown.float-right
               button.btn.btn-square.btn-sm.btn-secondary.dropdown-toggle(
@@ -42,3 +59,9 @@
                   data-on-click='admin.nntp.index:rebuild_group'
                   data-group-id=group._id
                 )= self.t('rebuild_group')
+
+                button.dropdown-item(
+                  type='button'
+                  data-on-click='admin.nntp.index:remove_group'
+                  data-group-id=group._id
+                )= self.t('remove_group')

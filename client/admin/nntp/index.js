@@ -27,6 +27,20 @@ N.wire.once('navigate.done:' + module.apiPath, function init_handlers() {
     return N.io.rpc('admin.nntp.rebuild_group', { group_id })
                .then(() => $('#nntp-group-' + group_id).addClass('nntp-groups__m-rebuild'));
   });
+
+
+  // Remove a single NNTP group
+  //
+  N.wire.before(module.apiPath + ':remove_group', function remove_confirm() {
+    return N.wire.emit('admin.core.blocks.confirm', t('remove_group_confirm'));
+  });
+
+  N.wire.on(module.apiPath + ':remove_group', function remove_exec(data) {
+    let group_id = data.$this.data('group-id');
+
+    return N.io.rpc('admin.nntp.remove_group', { group_id })
+               .then(() => N.wire.emit('navigate.reload'));
+  });
 });
 
 
