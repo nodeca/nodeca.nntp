@@ -12,6 +12,7 @@ module.exports = function (N, collectionName) {
 
   let Article = new Schema({
     source:  Schema.ObjectId,
+    parent:  Schema.ObjectId,
     group:   Schema.ObjectId,
     index:   Number
   }, {
@@ -24,6 +25,9 @@ module.exports = function (N, collectionName) {
 
   // find an article by message_id (ARTICLE command)
   Article.index({ source: 1 });
+
+  // mass-removal of messages
+  Article.index({ parent: 1 });
 
   // get range of articles inside a group
   Article.index({ group: 1, index: 1 });
