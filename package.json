@@ -19,5 +19,8 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "nntp-server": "^1.0.0"
   }
 }
