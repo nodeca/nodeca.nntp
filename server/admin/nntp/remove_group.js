@@ -15,6 +15,6 @@ module.exports = function (N, apiPath) {
     if (!group) throw N.io.NOT_FOUND;
 
     await group.remove();
-    await N.models.nntp.Article.remove({ group: env.params.group_id });
+    await N.models.nntp.Article.deleteMany({ group: env.params.group_id });
   });
 };
