@@ -18,14 +18,14 @@ module.exports = function (N, collectionName) {
     type:       String,
 
     // min visible post index (default max_index+1 means that group is empty)
-    min_index:  { type: Number, 'default': 1 },
+    min_index:  { type: Number, default: 1 },
 
     // max visible post index
-    max_index:  { type: Number, 'default': 0 },
+    max_index:  { type: Number, default: 0 },
 
     // Message counter. We can't use min/max directly,
     // because last message can be deleted.
-    last_index: { type: Number, 'default': 0 }
+    last_index: { type: Number, default: 0 }
   }, {
     versionKey: false
   });
