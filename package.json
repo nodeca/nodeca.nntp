@@ -8,18 +8,6 @@
   ],
   "license": "MIT",
   "repository": "nodeca/nodeca.nntp",
-  "browserify": {
-    "transform": [
-      [
-        "babelify",
-        {
-          "presets": [
-            "@babel/preset-env"
-          ]
-        }
-      ]
-    ]
-  },
   "dependencies": {
     "nntp-server": "^1.0.0"
   }
