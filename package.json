@@ -9,6 +9,6 @@
   "license": "MIT",
   "repository": "nodeca/nodeca.nntp",
   "dependencies": {
-    "nntp-server": "^1.0.0"
+    "nntp-server": "^2.0.0"
   }
 }
