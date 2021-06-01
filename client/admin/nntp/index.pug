@@ -5,10 +5,10 @@
     != self.partial('@admin.core.blocks.breadcrumbs')
 
     .page-head
-      .dropdown.float-right
+      .dropdown.float-end
         button.btn.btn-square.btn-light.dropdown-toggle(
           type='button'
-          data-toggle='dropdown'
+          data-bs-toggle='dropdown'
         )
         .dropdown-menu.dropdown-menu-right
           - var localizationPrefix = '@admin.menus.nntp.';
@@ -48,10 +48,10 @@
               title=self.t('edit_group')
             )= group.name
           td
-            .dropdown.float-right
+            .dropdown.float-end
               button.btn.btn-square.btn-sm.btn-light.dropdown-toggle(
                 type='button'
-                data-toggle='dropdown'
+                data-bs-toggle='dropdown'
               )
               .dropdown-menu.dropdown-menu-right
                 button.dropdown-item(
