@@ -3,8 +3,6 @@
 
 'use strict';
 
-const _  = require('lodash');
-
 
 module.exports = function (N, apiPath) {
   N.validate(apiPath, {});
@@ -23,7 +21,7 @@ module.exports = function (N, apiPath) {
       let task_id = `nntp_group_rebuild_${group.type}:${group._id}`;
 
       return N.queue.getTask(task_id).then(task => {
-        if (task && task.state !== 'finished') {
+        if (task?.state !== 'finished') {
           rebuild_in_progress[group._id] = true;
         }
       });
@@ -31,6 +29,6 @@ module.exports = function (N, apiPath) {
 
     env.res.groups = groups;
     env.res.rebuild_in_progress = rebuild_in_progress;
-    env.res.menu = _.get(N.config, 'menus.admin.nntp', {});
+    env.res.menu = N.config.menus?.admin?.nntp ?? {};
   });
 };
